@@ -76,7 +76,14 @@ public class CustomerResourceTest extends ApplicationTests {
 
     @Test
     public void t05_deve_retornar_status_404_quando_buscar_customer_por_name_e_last_name_inexistente() {
-
+        given()
+        .when()
+            .get(APP_CUSTOMER_PATH + infoCustomer.getNameELastNameInexistente())
+        .then()
+            .statusCode(404)
+            .body("error", is("Not Found"))
+            .body("message", is("Customer not found"))
+        ;
     }
 
     @Test

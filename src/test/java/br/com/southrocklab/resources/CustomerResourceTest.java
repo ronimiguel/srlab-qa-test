@@ -88,7 +88,15 @@ public class CustomerResourceTest extends ApplicationTests {
 
     @Test
     public void t06_deve_atualizar_o_last_name_de_um_customer() {
-
+        given()
+            .pathParam("id",id)
+            .body(createCustomer.AlteraLastName())
+        .when()
+            .put(APP_CUSTOMER_PATH + "/{id}")
+        .then()
+            .statusCode(200)
+            .body("lastName", is(infoCustomer.getLastNameAlterado()))
+        ;
     }
 
     @Test

@@ -56,4 +56,15 @@ public class CreateCard {
         return card;
     }
 
+    public Map<String, Object> comNumberMenor(int customerId){
+        Map<String, Object> card = new HashMap<String, Object>();
+        card.put("brand", cardData.getBrand());
+        card.put("cvc", cardData.getCvc());
+        card.put("expirationMoth", cardData.getExpMonth());
+        card.put("expirationYear", cardData.getExpYear());
+        card.put("holderName", cardData.getHolderName());
+        card.put("number", cardData.getCardNumberMenor());
+        card.put("customerId", customerId);
+        return card;
+    }
 }

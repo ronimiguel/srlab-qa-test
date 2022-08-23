@@ -52,7 +52,14 @@ public class CustomerResourceTest extends ApplicationTests {
 
     @Test
     public void t03_deve_retornar_status_400_quando_salvar_customer_com_birth_date_maior_que_hoje() {
-
+        given()
+            .body(createCustomer.ComBirthDateMaiorQueHoje())
+        .when()
+            .post(APP_CUSTOMER_PATH)
+        .then()
+            .statusCode(400)
+            .body("birthDate", is("Birth date must be smaller than today"))
+        ;
     }
 
     @Test

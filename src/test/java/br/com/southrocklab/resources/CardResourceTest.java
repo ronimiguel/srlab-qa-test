@@ -77,7 +77,14 @@ public class CardResourceTest extends ApplicationTests {
 
     @Test
     public void t13_deve_retornar_status_400_quando_salvar_card_com_expiration_year_menor_que_2022() {
-
+        given()
+            .body(createCard.comExpYearMenorQueAtual(customerId))
+        .when()
+            .post(APP_CARD_PATH)
+        .then()
+            .statusCode(400)
+            .body("expirationYear", is("Expiration year must be greater than the current one"))
+        ;
     }
 
     @Test

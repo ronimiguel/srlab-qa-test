@@ -65,7 +65,14 @@ public class CardResourceTest extends ApplicationTests {
 
     @Test
     public void t12_deve_retornar_status_400_quando_salvar_card_com_expiration_month_maior_que_12() {
-
+        given()
+            .body(createCard.comExpMonthMaior(customerId))
+        .when()
+            .post(APP_CARD_PATH)
+        .then()
+            .statusCode(400)
+            .body("expirationMoth", is("Expiration month must be less then 12"))
+        ;
     }
 
     @Test

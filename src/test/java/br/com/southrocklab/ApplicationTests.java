@@ -21,8 +21,8 @@ public abstract class ApplicationTests {
     @Before
     public void setUp() {
         RestAssured.baseURI = APP_BASE_URL;
-//        RestAssured.port = porta; // PORTA aleatoria
-        RestAssured.port = APP_PORT; // PORTA 9090
+        RestAssured.port = porta; // PORTA aleatoria
+//        RestAssured.port = APP_PORT; // PORTA 9090
         RestAssured.basePath = APP_BASE_PATH;
 
         RequestSpecBuilder reqBuilder = new RequestSpecBuilder();

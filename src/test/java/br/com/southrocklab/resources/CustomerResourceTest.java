@@ -38,6 +38,15 @@ public class CustomerResourceTest extends ApplicationTests {
 
     @Test
     public void t02_deve_retornar_status_400_quando_salvar_customer_ja_salvo() {
+        given()
+            .body(createCustomer.SalvarNovoCustomer())
+        .when()
+            .post(APP_CUSTOMER_PATH)
+        .then()
+            .statusCode(400)
+            .body("error", is("Bad Request"))
+            .body("message", is("Customer already exists"))
+        ;
 
     }
 

@@ -124,6 +124,12 @@ public class CustomerResourceTest extends ApplicationTests {
 
     @Test
     public void t09_deve_retornar_status_404_ao_deletar_um_customer_com_id_nao_salvo_no_sistema() {
-
+        given()
+        .when()
+            .delete(APP_CUSTOMER_PATH + infoCustomer.getIdInexistente())
+        .then()
+            .statusCode(404)
+            .body("message", is("Customer not found"))
+        ;
     }
 }

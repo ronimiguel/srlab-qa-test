@@ -89,7 +89,14 @@ public class CardResourceTest extends ApplicationTests {
 
     @Test
     public void t14_deve_retornar_status_400_quando_salvar_card_com_number_de_15_digitos() {
-
+        given()
+            .body(createCard.comNumberMenor(customerId))
+        .when()
+            .post(APP_CARD_PATH)
+        .then()
+            .statusCode(400)
+            .body("number", is("Number must have a 16 numbers"))
+        ;
     }
 
     @Test

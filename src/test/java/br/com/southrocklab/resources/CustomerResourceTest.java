@@ -113,7 +113,13 @@ public class CustomerResourceTest extends ApplicationTests {
 
     @Test
     public void t08_deve_deletar_um_customer_salvo_no_sistema() {
-
+        given()
+            .pathParam("id",id)
+        .when()
+            .delete(APP_CUSTOMER_PATH + "/{id}")
+        .then()
+            .statusCode(204) // FIXME: SWAGGER CONSTA 200
+        ;
     }
 
     @Test

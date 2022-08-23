@@ -53,7 +53,14 @@ public class CardResourceTest extends ApplicationTests {
 
     @Test
     public void t11_deve_retornar_status_400_quando_salvar_card_com_cvv_maior_que_999() {
-
+        given()
+            .body(createCard.comCvcMaior(customerId))
+        .when()
+            .post(APP_CARD_PATH)
+        .then()
+            .statusCode(400)
+            .body("cvc", is("cvc must be between 001 to 999"))
+        ;
     }
 
     @Test

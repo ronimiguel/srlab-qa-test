@@ -64,7 +64,14 @@ public class CustomerResourceTest extends ApplicationTests {
 
     @Test
     public void t04_deve_procurar_customer_pelo_name_e_last_name() {
-
+       given()
+       .when()
+            .get(APP_CUSTOMER_PATH + infoCustomer.getPesquisa())
+       .then()
+           .statusCode(200)
+           .body("name", is(infoCustomer.getName()))
+           .body("lastName", is(infoCustomer.getLastName()))
+        ;
     }
 
     @Test

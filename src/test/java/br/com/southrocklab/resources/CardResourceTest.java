@@ -112,6 +112,21 @@ public class CardResourceTest extends ApplicationTests {
 
     @Test
     public void t16_deve_retornar_status_404_ao_deletar_um_card_com_id_nao_salvo_no_sistema() {
-
+        given()
+            .pathParam("id",cardId)
+        .when()
+            .delete(APP_CARD_PATH + "/{id}")
+        .then()
+            .statusCode(404)
+                .body("error", is("Not Found"))
+                .body("message", is("Card not found"))
+        ;
+        // apaga ultimo cliente, isso ficou feio :( mas tem que limpar a base
+        given()
+        .when()
+            .delete(APP_CUSTOMER_PATH + "/" + String.valueOf(customerId))
+        .then()
+            .statusCode(204)
+        ;
     }
 }
